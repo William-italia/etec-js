@@ -1,3 +1,5 @@
+//baixar extensão Code Runner e utilizar o comando: CTRL + ALT + N
+
 function nomeCompleto(name) {
     const partes = name.trim().split(' ');
     const primeiroNome = partes[0];
