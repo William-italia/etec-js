@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+</head>
+
+<body>
+
+    <h1>Divisão de Números</h1>
+    <form id="divisaoForm">
+        <label for="numerador">Numerador:</label>
+        <input type="number" id="numerador" name="numerador" required>
+        <labela for="denominador">Denominador:</labela>
+        <input type="number" id="denominador" name="denominador" required>
+        <button type="submit">Calcular</button>
+    </form>
+    <div id="resultadoDivisao"></div>
+
+    <script>
+
+        document.getElementById('divisaoForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const numerador = parseInt(document.getElementById('numerador').value);
+            const denominador = parseInt(document.getElementById('denominador').value);
+            const resultado = divisao(numerador, denominador);
+            document.getElementById('resultadoDivisao').innerText = `Resultado: ${resultado}`;
+        });
+
+        function divisao(numerador, denominador) {
+            return numerador / denominador;
+        }
+
+    </script>
+</body>
+
+</html>

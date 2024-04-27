@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+</head>
+
+<body>
+
+    <h1>Média de Notas</h1>
+    <form id="mediaNotasForm">
+        <label for="notas">Notas (separadas por vírgula):</label>
+        <input type="text" id="notas" name="notas" required>
+        <button type="submit">Calcular</button>
+    </form>
+    <div id="resultadoMedia"></div>
+
+    <script>
+
+        document.getElementById('mediaNotasForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const notasString = document.getElementById('notas').value;
+            const notas = notasString.split(',').map(nota => parseFloat(nota.trim()));
+            const resultado = mediaNotas(notas);
+            document.getElementById('resultadoMedia').innerText = `Media das notas: ${resultado}`;
+        });
+
+        function mediaNotas(notas) {
+            const total = notas.reduce((acc, nota) => acc + nota, 0);
+            const media = total / notas.length;
+            return media;
+        }
+
+    </script>
+</body>
+
+</html>
