@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Churrasco</title>
+</head>
+
+<body>
+    <h1>Calculadora de Churrasco</h1>
+    <form id="churrascoForm" onsubmit="calcularChurrasco(event)">
+        <label for="adultosAlcool">Adultos (que consomem bebidas alcoólicas):</label>
+        <input type="number" id="adultosAlcool" name="adultosAlcool" required><br><br>
+
+        <label for="adultosNaoAlcool">Adultos (que não consomem bebidas alcoólicas):</label>
+        <input type="number" id="adultosNaoAlcool" name="adultosNaoAlcool" required><br><br>
+
+        <label for="criancas">Crianças:</label>
+        <input type="number" id="criancas" name="criancas" required><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularChurrasco(event) {
+
+            event.preventDefault();
+
+            const adultosAlcool = parseInt(document.getElementById('adultosAlcool').value);
+            const adultosNaoAlcool = parseInt(document.getElementById('adultosNaoAlcool').value);
+            const criancas = parseInt(document.getElementById('criancas').value);
+
+
+            const carnePorAdulto = 400;
+            const carnePorCrianca = 200;
+            const acompanhamentosPorPessoa = 200;
+            const cervejaPorAdulto = 2000;
+            const refrigerantePorAdulto = 500;
+            const refrigerantePorCrianca = 500;
+            const aguaPorPessoa = 400;
+
+            const carneTotal = (adultosAlcool + adultosNaoAlcool) * carnePorAdulto + criancas * carnePorCrianca;
+            const acompanhamentosTotal = (adultosAlcool + adultosNaoAlcool + criancas) * acompanhamentosPorPessoa;
+            const cervejaTotal = adultosAlcool * cervejaPorAdulto;
+            const refrigeranteTotal = (adultosNaoAlcool * refrigerantePorAdulto) + (criancas * refrigerantePorCrianca);
+            const aguaTotal = (adultosAlcool + adultosNaoAlcool + criancas) * aguaPorPessoa;
+
+
+            const carneKg = (carneTotal / 1000).toFixed(1);
+            const acompanhamentosKg = (acompanhamentosTotal / 1000).toFixed(1);
+            const cervejaLitros = (cervejaTotal / 1000).toFixed(1);
+            const refrigeranteLitros = (refrigeranteTotal / 1000).toFixed(1);
+            const aguaLitros = (aguaTotal / 1000).toFixed(1);
+
+
+            const resultado = `
+                --- Churrasco ---<br>
+                Adultos (que consomem bebidas alcoólicas).......: ${adultosAlcool}<br>
+                Adultos (que não consomem bebidas alcoólicas)...: ${adultosNaoAlcool}<br>
+                Crianças........................................: ${criancas}<br><br>
+                Carne.............: ${carneKg}kg<br>
+                Acompanhamentos...: ${acompanhamentosKg}kg<br>
+                Cerveja...........: ${cervejaLitros}l<br>
+                Refrigerante......: ${refrigeranteLitros}l<br>
+                Água..............: ${aguaLitros}l<br>
+            `;
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+
+</html>

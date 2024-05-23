@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Image on Button Click</title>
+</head>
+
+<body>
+    <img id="image" src="image11.png" alt="Image" width="300">
+    <br>
+    <button id="changeImageButton">Change Image</button>
+
+    <script>
+        document.getElementById('changeImageButton').addEventListener('click', function () {
+            var image = document.getElementById('image');
+            if (image.src.includes('image11.png')) {
+                image.src = 'image2.png';
+            } else {
+                image.src = 'image11.png';
+            }
+        });
+
+    </script>
+</body>
+
+</html>
